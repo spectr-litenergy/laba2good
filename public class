@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите x: ");
+        double x = scanner.nextDouble();
+        System.out.print("Введите количество членов ряда: ");
+        int n = scanner.nextInt();
+        double sum = 0;
+        // Цикл for, который вычисляет n членов ряда  для приближенного вычисления e^x.
+        for (int i = 0; i < n; i++) {
+            // Вычисляем факториал для текущего n.
+            double factorial = 1;
+            for (int j = 1; j <= i; j++) {
+                factorial *= j;
+            }
+            if (factorial == 0) factorial = 1; // Обработка случая n=0
+            // Вычисляем текущий член ряда и добавляем его к сумме.
+            sum += Math.pow(-1, i) * Math.pow(x, i) / factorial;
+        }
+        System.out.println("e^" + x + " = " + sum);
+    }
+}
